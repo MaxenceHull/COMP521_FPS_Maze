@@ -1,0 +1,33 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red51\green51\blue51;}
+{\*\expandedcolortbl;;\csgenericrgb\c20000\c20000\c20000;}
+\margl1440\margr1440\vieww33400\viewh21000\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 COMP521 - Modern Computer Games\
+Assignment 1\
+\
+Even is the code is very straightforward, I wanted to explain in details some of its most complex parts.\
+\
+-> The player controller script is standard and had been inspired by an official Unity tutorial.\
+-> Each cell of the maze is represented by a plane (the ground) and 4 walls (east, west, north and south)\
+-> In maze2 script: \
+	-> Generate() is the first function to be called by the Game Manager\
+	-> It generates the maze using Wilson\'92s algorithm\
+	-> Rooms are placed before running Wilson\'92s algorithm (they\'92re not considered in it) \
+	-> \cf2 CreateNewPath() generate a path between two cells. Due to the cell conception, two corresponding walls have to be removed to make a path between two cells (ex: south wall of the first cell and north wall of the second one)\
+	->\cf0 GenerateTree() generates 3 trees corresponding to the 3 enemies paths\
+		-> During the game, DFS\'92s algorithm runs on each of these trees in order to make the enemies move\
+		-> A Node class has been to made to facilitate DFS\'92s implementation\
+->In enemy script:\
+	-> Enemy\'92s animation is based on coroutines because it couldn\'92t be adequately done in the Update() function\
+-> A GameObject must have a representative tag to be recognized during a collision\
+\
+References:\
+Because it was my first project using Unity, I used a lots of different sources to help me resolving some crucial problems:\
+	-> Unity official website to understand how unity works \
+	-> Unity official tutorials to help with gameplay related issues (move the player,  the camera...)\
+	-> http://weblog.jamisbuck.org/2011/1/20/maze-generation-wilson-s-algorithm helps me for the Wilson\'92s algorithm implementation\
+	-> http://catlikecoding.com/unity/tutorials/maze/ gives me some ideas for the general structure of the project (Maze, cell \'85) \
+	-> http://wiki.unity3d.com/index.php?title=MoveObject explains how coroutines and animations work together to move an object without using the Update() function}
